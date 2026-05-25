@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadhana Weds Kamal 💍</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #e8436a;
+    --deep-rose: #c0264d;
+    --gold: #d4a843;
+    --light-gold: #f0d080;
+    --blush: #fce4ec;
+    --cream: #fff8f0;
+    --dark: #2d1a2e;
+    --petals: #f48fb1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--cream);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  .cursor {
+    width: 18px; height: 18px;
+    background: var(--rose);
+    border-radius: 50%;
+    position: fixed; pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform .1s, background .2s;
+    mix-blend-mode: screen;
+  }
+
+  /* ── FLOATING HEARTS CANVAS ── */
+  #hearts-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { position: relative; z-index: 1; }
+
+  /* ══════════════════════════════════════
+     HERO SECTION
+  ══════════════════════════════════════ */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #5c1a3a 0%, #2d1a2e 60%, #0d0a0e 100%);
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .hero-petals {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .petal {
+    position: absolute;
+    width: 12px; height: 18px;
+    background: radial-gradient(ellipse at 40% 30%, #f8bbd0, #e91e63);
+    border-radius: 50% 0 50% 0;
+    opacity: .7;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0%   { transform: translateY(-60px) rotate(0deg) translateX(0); opacity:.8; }
+    100% { transform: translateY(110vh) rotate(720deg) translateX(80px); opacity:0; }
+  }
+
+  .hero-tagline {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--gold);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp .8s .3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, var(--light-gold) 50%, var(--petals) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 16px 0 8px;
+    opacity: 0;
+    animation: fadeUp .9s .6s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
+    color: var(--petals);
+    opacity: 0;
+    animation: fadeUp .9s .9s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(30px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ── BIG HEART with "I Love You Kamal" ── */
+  .big-heart-wrap {
+    margin: 40px 0 20px;
+    opacity: 0;
+    animation: fadeUp .9s 1.2s forwards;
+  }
+
+  .big-heart {
+    position: relative;
+    width: 220px; height: 200px;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 30px rgba(232,67,106,.7));
+    animation: heartbeat 1.6s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    14%  { transform: scale(1.13); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.08); }
+    56%  { transform: scale(1); }
+  }
+
+  .big-heart svg { width: 100%; height: 100%; }
+
+  .heart-text {
+    position: absolute;
+    inset: 0; display: flex;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    line-height: 1.3;
+    padding-bottom: 16px;
+  }
+  .heart-text .ily { font-size: 1.15rem; }
+  .heart-text .name { font-size: 1.7rem; font-weight: 700; color: var(--light-gold); }
+
+  /* ── SCROLL CTA ── */
+  .scroll-cta {
+    margin-top: 30px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,.5);
+    animation: bounce 2s infinite;
+    opacity: 0;
+    animation: fadeUp .8s 1.8s forwards, bounce 2s 2.6s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+  }
+
+  /* ══════════════════════════════════════
+     TIMELINE SECTION
+  ══════════════════════════════════════ */
+  #timeline {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0d0a0e 0%, #1a0d1e 100%);
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 12px auto 0;
+  }
+
+  .timeline-container {
+    max-width: 800px; margin: 0 auto;
+    position: relative;
+  }
+  .timeline-container::before {
+    content: '';
+    position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--rose), var(--gold), var(--rose), transparent);
+    transform: translateX(-50%);
+  }
+
+  .tl-item {
+    display: flex; align-items: center;
+    margin-bottom: 50px;
+    opacity: 0;
+    transition: opacity .6s, transform .6s;
+    transform: translateY(30px);
+  }
+  .tl-item.visible { opacity: 1; transform: translateY(0); }
+
+  .tl-item:nth-child(odd)  { flex-direction: row; }
+  .tl-item:nth-child(even) { flex-direction: row-reverse; }
+
+  .tl-card {
+    width: 45%;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(232,67,106,.3);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .tl-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--rose);
+    box-shadow: 0 12px 40px rgba(232,67,106,.25);
+  }
+
+  .tl-dot {
+    width: 10%; display: flex; justify-content: center;
+  }
+  .tl-dot span {
+    width: 20px; height: 20px;
+    background: var(--rose);
+    border: 3px solid var(--dark);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(232,67,106,.3), 0 0 20px rgba(232,67,106,.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(232,67,106,.3), 0 0 20px rgba(232,67,106,.6); }
+    50%      { box-shadow: 0 0 0 8px rgba(232,67,106,.1), 0 0 30px rgba(232,67,106,.8); }
+  }
+
+  .tl-date {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--petals);
+    margin-bottom: 6px;
+  }
+  .tl-desc {
+    font-size: .95rem;
+    color: rgba(255,248,240,.7);
+    line-height: 1.6;
+  }
+  .tl-emoji { font-size: 1.8rem; margin-bottom: 8px; }
+
+  /* ══════════════════════════════════════
+     GALLERY CAROUSEL
+  ══════════════════════════════════════ */
+  #gallery {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #1a0d1e 0%, #0d0a0e 100%);
+    overflow: hidden;
+  }
+
+  .carousel-wrap {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .carousel-track-outer {
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(212,168,67,.2);
+    box-shadow: 0 0 80px rgba(232,67,106,.2);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform .6s cubic-bezier(.77,0,.175,1);
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center; justify-content: center;
+    font-size: 5rem;
+    background: linear-gradient(135deg, #2d1a2e, #1a0d1e);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: inherit;
+    filter: blur(0);
+  }
+
+  .slide-content {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 30px;
+  }
+  .slide-emoji { font-size: 4rem; display: block; margin-bottom: 16px; }
+  .slide-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+  }
+  .slide-sub {
+    font-size: 1rem;
+    color: rgba(255,248,240,.6);
+    margin-top: 8px;
+  }
+
+  /* Slide colors */
+  .s1 { background: linear-gradient(135deg, #3a1020, #5c1a3a, #2d1a2e); }
+  .s2 { background: linear-gradient(135deg, #1a2a3a, #0d3a5c, #1a0d1e); }
+  .s3 { background: linear-gradient(135deg, #2a3a1a, #3a5c0d, #1a2e0d); }
+  .s4 { background: linear-gradient(135deg, #3a2a1a, #5c3a0d, #2e1a0d); }
+  .s5 { background: linear-gradient(135deg, #3a1a3a, #5c0d5c, #2e0d2e); }
+
+  .carousel-btn {
+    position: absolute; top: 50%;
+    transform: translateY(-50%);
+    width: 48px; height: 48px;
+    background: rgba(232,67,106,.7);
+    border: none; border-radius: 50%;
+    color: #fff; font-size: 1.4rem;
+    cursor: pointer; z-index: 10;
+    transition: background .2s, transform .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .carousel-btn:hover { background: var(--rose); transform: translateY(-50%) scale(1.1); }
+  .carousel-btn.prev { left: -24px; }
+  .carousel-btn.next { right: -24px; }
+
+  .carousel-dots {
+    display: flex; justify-content: center; gap: 10px;
+    margin-top: 20px;
+  }
+  .c-dot {
+    width: 10px; height: 10px;
+    background: rgba(255,255,255,.2);
+    border-radius: 50%; cursor: pointer;
+    transition: background .3s, transform .3s;
+  }
+  .c-dot.active { background: var(--rose); transform: scale(1.3); }
+
+  /* ══════════════════════════════════════
+     HOBBIES SECTION
+  ══════════════════════════════════════ */
+  #hobbies {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #0d0a0e 0%, #1a0d1e 100%);
+  }
+
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hobby-person {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(232,67,106,.2);
+    border-radius: 20px;
+    padding: 30px 24px;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .hobby-person:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 40px rgba(212,168,67,.15);
+  }
+
+  .person-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+  .person-avatar {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .hobby-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .hobby-tag {
+    background: rgba(232,67,106,.15);
+    border: 1px solid rgba(232,67,106,.4);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: .85rem;
+    color: var(--petals);
+    cursor: pointer;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hobby-tag::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--rose);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s;
+    z-index: -1;
+  }
+  .hobby-tag:hover { color: #fff; border-color: var(--rose); }
+  .hobby-tag:hover::before { transform: scaleX(1); }
+
+  .add-hobby-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px dashed rgba(212,168,67,.4);
+    border-radius: 12px;
+    color: var(--gold);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  .add-hobby-btn:hover {
+    background: rgba(212,168,67,.1);
+    border-color: var(--gold);
+    transform: scale(1.02);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: linear-gradient(135deg, #2d1a2e, #1a0d1e);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 36px;
+    max-width: 400px; width: 90%;
+    transform: scale(.9);
+    transition: transform .3s;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .modal input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(232,67,106,.4);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    outline: none;
+    margin-bottom: 16px;
+  }
+  .modal input:focus { border-color: var(--gold); }
+  .modal-actions { display: flex; gap: 12px; }
+  .btn-save, .btn-cancel {
+    flex: 1; padding: 12px;
+    border: none; border-radius: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform .2s, opacity .2s;
+  }
+  .btn-save { background: var(--rose); color: #fff; }
+  .btn-cancel { background: rgba(255,255,255,.1); color: #fff; }
+  .btn-save:hover, .btn-cancel:hover { transform: scale(1.04); opacity: .9; }
+
+  /* ══════════════════════════════════════
+     LOVE LETTER SECTION
+  ══════════════════════════════════════ */
+  #letter {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, #1a0d1e 0%, #0d0a0e 100%);
+  }
+
+  .letter-paper {
+    max-width: 680px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #fff8f0 0%, #fce4ec 100%);
+    color: #3a1020;
+    border-radius: 4px;
+    padding: 50px 50px 60px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(232,67,106,.2),
+      0 20px 80px rgba(0,0,0,.5),
+      inset 0 0 60px rgba(232,67,106,.05);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    transform-origin: top center;
+    animation: unfold 1s .5s backwards;
+  }
+
+  @keyframes unfold {
+    from { transform: perspective(600px) rotateX(-20deg) scaleY(.85); opacity: 0; }
+    to   { transform: perspective(600px) rotateX(0deg) scaleY(1); opacity: 1; }
+  }
+
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+  }
+
+  .letter-date {
+    font-style: italic;
+    color: var(--deep-rose);
+    margin-bottom: 24px;
+    font-size: .95rem;
+  }
+  .letter-body p { margin-bottom: 16px; }
+  .letter-sign {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--deep-rose);
+    text-align: right;
+    margin-top: 30px;
+  }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    background: #0d0a0e;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: var(--petals);
+  }
+  footer .forever {
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ══════════════════════════════════════
+     SPARKLE PARTICLES
+  ══════════════════════════════════════ */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: sparkle-fade .6s forwards;
+  }
+  @keyframes sparkle-fade {
+    0%   { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0) translateY(-30px); opacity: 0; }
+  }
+
+  /* ══════════════════════════════════════
+     FLOATING RINGS DECORATION
+  ══════════════════════════════════════ */
+  .ring-deco {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(212,168,67,.15);
+    pointer-events: none;
+    animation: spin-ring linear infinite;
+  }
+  @keyframes spin-ring {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ── ADD JOURNEY BUTTON ── */
+  .add-journey-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .add-journey-btn {
+    position: relative;
+    padding: 14px 36px;
+    background: transparent;
+    border: 2px solid var(--rose);
+    border-radius: 50px;
+    color: var(--cream);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color .3s, transform .3s, box-shadow .3s;
+    box-shadow: 0 0 20px rgba(232,67,106,.2);
+  }
+  .add-journey-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s ease;
+    z-index: 0;
+  }
+  .add-journey-btn:hover { color: #fff; transform: scale(1.05); box-shadow: 0 0 40px rgba(232,67,106,.5); }
+  .add-journey-btn:hover::before { transform: scaleX(1); }
+  .add-journey-btn span { position: relative; z-index: 1; }
+
+  /* ── JOURNEY MODAL ── */
+  #journey-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 1001;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+    backdrop-filter: blur(8px);
+  }
+  #journey-modal-overlay.open { opacity: 1; pointer-events: all; }
+  #journey-modal-overlay .modal {
+    background: linear-gradient(135deg, #2d1a2e, #1a0d1e);
+    border: 1px solid var(--rose);
+    border-radius: 20px;
+    padding: 36px;
+    max-width: 420px; width: 92%;
+    transform: scale(.9) translateY(20px);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  #journey-modal-overlay.open .modal { transform: scale(1) translateY(0); }
+  #journey-modal-overlay .modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-style: italic;
+    color: var(--gold); text-align: center; margin-bottom: 22px;
+  }
+  .jm-field { margin-bottom: 14px; }
+  .jm-field label {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    color: var(--petals);
+    margin-bottom: 6px;
+  }
+  .jm-field input, .jm-field textarea {
+    width: 100%; padding: 11px 14px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(232,67,106,.35);
+    border-radius: 10px;
+    color: #fff;
+    font-size: .95rem;
+    font-family: 'Cormorant Garamond', serif;
+    outline: none;
+    resize: none;
+    transition: border-color .2s;
+  }
+  .jm-field input:focus, .jm-field textarea:focus { border-color: var(--gold); }
+  .jm-field textarea { height: 80px; }
+
+  /* new tl-item entry animation */
+  .tl-item.new-entry {
+    animation: popIn .5s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  @keyframes popIn {
+    from { opacity:0; transform: scale(.85) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+
+  .add-moment-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .add-moment-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    border-radius: 40px;
+    color: var(--gold);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .add-moment-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(212,168,67,.15), rgba(232,67,106,.15));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+  }
+  .add-moment-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212,168,67,.3); }
+  .add-moment-btn:hover::before { transform: scaleX(1); }
+  .add-moment-btn .btn-icon { font-size: 1.3rem; animation: spin-icon 3s linear infinite; }
+  @keyframes spin-icon {
+    0%,90%,100% { transform: rotate(0deg); }
+    95% { transform: rotate(20deg); }
+  }
+
+  /* Timeline moment modal */
+  #tl-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 1001;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+    backdrop-filter: blur(8px);
+  }
+  #tl-modal-overlay.open { opacity: 1; pointer-events: all; }
+  #tl-modal-overlay .modal { transform: scale(.9); transition: transform .3s; }
+  #tl-modal-overlay.open .modal { transform: scale(1); }
+  .tl-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .tl-modal-grid input,
+  #tl-modal-overlay textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(232,67,106,.4);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    outline: none;
+    resize: none;
+  }
+  .tl-modal-grid input:focus,
+  #tl-modal-overlay textarea:focus { border-color: var(--gold); }
+  #tl-modal-overlay textarea { margin-bottom: 16px; }
+
+  /* New tl-item pop-in animation */
+  @keyframes tl-popin {
+    from { opacity:0; transform: scale(.85) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .tl-item.new-item { animation: tl-popin .5s ease forwards; }
+
+  @media (max-width: 600px) {
+    .hobbies-grid { grid-template-columns: 1fr; }
+    .tl-item { flex-direction: column !important; align-items: flex-start; }
+    .tl-card { width: 90%; }
+    .tl-dot { width: 100%; justify-content: flex-start; padding-left: 5%; margin: 8px 0; }
+    .timeline-container::before { left: 5%; }
+    .letter-paper { padding: 28px 24px 36px; }
+    .carousel-btn.prev { left: 4px; }
+    .carousel-btn.next { right: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- Floating hearts canvas -->
+<canvas id="hearts-canvas"></canvas>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="hero">
+  <div class="hero-petals" id="petals"></div>
+
+  <!-- decorative rings -->
+  <div class="ring-deco" style="width:400px;height:400px;top:-80px;right:-100px;animation-duration:40s"></div>
+  <div class="ring-deco" style="width:200px;height:200px;bottom:40px;left:-60px;animation-duration:28s;animation-direction:reverse"></div>
+
+  <p class="hero-tagline">✦ A story of two hearts ✦</p>
+  <h1 class="hero-title">Sadhana Weds Kamal</h1>
+  <p class="hero-subtitle">Forever & Always 💍</p>
+
+  <!-- BIG BEATING HEART -->
+  <div class="big-heart-wrap">
+    <div class="big-heart">
+      <svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="40%">
+            <stop offset="0%" stop-color="#ff6b8a"/>
+            <stop offset="60%" stop-color="#e8436a"/>
+            <stop offset="100%" stop-color="#8b1234"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M100,165 C100,165 10,110 10,60 A40,40 0 0,1 100,45 A40,40 0 0,1 190,60 C190,110 100,165 100,165 Z"
+              fill="url(#hg)" filter="url(#glow)"/>
+        <!-- shine -->
+        <path d="M55,52 Q70,38 85,48" stroke="rgba(255,255,255,.4)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="heart-text">
+        <span class="ily">I Love You</span>
+        <span class="name">Kamal 💕</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="scroll-cta">↓ scroll our story ↓</p>
+</section>
+
+<!-- ════════════ TIMELINE ════════════ -->
+<section id="timeline">
+  <h2 class="section-title">Our Beautiful Journey</h2>
+
+  <div class="add-moment-wrap">
+    <button class="add-moment-btn" onclick="openTlModal()">
+      <span class="btn-icon">✦</span>
+      Add a New Moment
+      <span class="btn-icon">✦</span>
+    </button>
+  </div>
+
+  <div class="timeline-container" id="tl-container">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-emoji">🌸</div>
+        <div class="tl-date">27 March</div>
+        <div class="tl-title">First Meet</div>
+        <div class="tl-desc">The day our eyes met for the first time — a moment that changed everything. The universe conspired just for us.</div>
+      </div>
+      <div class="tl-dot"><span></span></div>
+      <div style="width:45%"></div>
+    </div>
+
+    <div class="tl-item">
+      <div style="width:45%"></div>
+      <div class="tl-dot"><span></span></div>
+      <div class="tl-card">
+        <div class="tl-emoji">💬</div>
+        <div class="tl-date">9 April</div>
+        <div class="tl-title">First Chat</div>
+        <div class="tl-desc">The very first words exchanged — a simple message that sparked a beautiful conversation and the beginning of something magical between us.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-emoji">💍</div>
+        <div class="tl-date">20 April</div>
+        <div class="tl-title">Engagement</div>
+        <div class="tl-desc">The most precious ring, the most precious promise. You said yes and made my world complete. Our forever begins.</div>
+      </div>
+      <div class="tl-dot"><span></span></div>
+      <div style="width:45%"></div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-emoji">🌹</div>
+        <div class="tl-date">23 April</div>
+        <div class="tl-title">Second Meet</div>
+        <div class="tl-desc">Every moment with you feels like the first time. Our second meeting filled my heart with warmth and joy.</div>
+      </div>
+      <div class="tl-dot"><span></span></div>
+      <div style="width:45%"></div>
+    </div>
+
+    <div class="tl-item">
+      <div style="width:45%"></div>
+      <div class="tl-dot"><span></span></div>
+      <div class="tl-card">
+        <div class="tl-emoji">🌟</div>
+        <div class="tl-date">25 April</div>
+        <div class="tl-title">Third Meet</div>
+        <div class="tl-desc">Each time I see you, I fall a little more in love. Our third meeting painted the most beautiful memories.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div style="width:45%"></div>
+      <div class="tl-dot"><span></span></div>
+      <div class="tl-card">
+        <div class="tl-emoji">🌸</div>
+        <div class="tl-date">4 May</div>
+        <div class="tl-title">Sadhana's Birthday 🎂</div>
+        <div class="tl-desc">The day the world became more beautiful — happy birthday to my most precious person. Every year with you is the greatest gift I could ever ask for. 🎀</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-emoji">🎂</div>
+        <div class="tl-date">12 November</div>
+        <div class="tl-title">Kamal's Birthday 🎉</div>
+        <div class="tl-desc">Happy birthday to the man who stole my heart! The day the universe sent me my favourite person. Wishing you all the love, laughter and joy you deserve. 🥳</div>
+      </div>
+      <div class="tl-dot"><span></span></div>
+      <div style="width:45%"></div>
+    </div>
+
+    <div class="tl-item">
+      <div style="width:45%"></div>
+      <div class="tl-dot"><span></span></div>
+      <div class="tl-card">
+        <div class="tl-emoji">👑</div>
+        <div class="tl-date">Coming Soon</div>
+        <div class="tl-title">Sadhana Weds Kamal</div>
+        <div class="tl-desc">The grandest chapter of our love story. Two souls, one destiny, a lifetime of togetherness ahead.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ GALLERY CAROUSEL ════════════ -->
+<section id="gallery">
+  <h2 class="section-title">Memories Gallery</h2>
+  <div class="carousel-wrap">
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="carousel-track">
+
+        <div class="carousel-slide s1">
+          <div class="slide-content">
+            <span class="slide-emoji">🌸</span>
+            <p class="slide-label">First Glance</p>
+            <p class="slide-sub">27 March — When eyes spoke louder than words</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide s2">
+          <div class="slide-content">
+            <span class="slide-emoji">💍</span>
+            <p class="slide-label">The Engagement</p>
+            <p class="slide-sub">20 April — A ring, a promise, forever</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide s3">
+          <div class="slide-content">
+            <span class="slide-emoji">🌹</span>
+            <p class="slide-label">Together Again</p>
+            <p class="slide-sub">23 April — Second meet, second chapter</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide s4">
+          <div class="slide-content">
+            <span class="slide-emoji">✨</span>
+            <p class="slide-label">Golden Afternoon</p>
+            <p class="slide-sub">25 April — Every minute precious</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide s5">
+          <div class="slide-content">
+            <span class="slide-emoji">👑</span>
+            <p class="slide-label">Forever Begins</p>
+            <p class="slide-sub">Sadhana ❤️ Kamal — Always & forever</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="carousel-btn prev" id="prev-btn">&#8592;</button>
+    <button class="carousel-btn next" id="next-btn">&#8594;</button>
+
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </div>
+</section>
+
+<!-- ════════════ HOBBIES ════════════ -->
+<section id="hobbies">
+  <h2 class="section-title">Our Little Worlds</h2>
+  <div class="hobbies-grid">
+
+    <!-- SADHANA -->
+    <div class="hobby-person">
+      <div class="person-avatar">👩‍🌸</div>
+      <div class="person-name">Sadhana</div>
+      <div class="hobby-tags" id="sadhana-tags">
+        <span class="hobby-tag">🎨 Painting</span>
+        <span class="hobby-tag">📚 Reading</span>
+        <span class="hobby-tag">🌸 Gardening</span>
+        <span class="hobby-tag">🍳 Cooking</span>
+        <span class="hobby-tag">🎵 Music</span>
+        <span class="hobby-tag">✈️ Travelling</span>
+      </div>
+      <button class="add-hobby-btn" onclick="openModal('sadhana')">+ Add Hobby</button>
+    </div>
+
+    <!-- KAMAL -->
+    <div class="hobby-person">
+      <div class="person-avatar">👨‍🌿</div>
+      <div class="person-name">Kamal</div>
+      <div class="hobby-tags" id="kamal-tags">
+        <span class="hobby-tag">📷 Photography</span>
+        <span class="hobby-tag">🏏 Cricket</span>
+        <span class="hobby-tag">💻 Technology</span>
+        <span class="hobby-tag">🎬 Movies</span>
+        <span class="hobby-tag">🚴 Cycling</span>
+        <span class="hobby-tag">🌿 Nature</span>
+      </div>
+      <button class="add-hobby-btn" onclick="openModal('kamal')">+ Add Hobby</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ LOVE LETTER ════════════ -->
+<section id="letter">
+  <h2 class="section-title">A Letter from the Heart</h2>
+  <div class="letter-paper">
+    <p class="letter-date">My Dearest Kamal,</p>
+    <div class="letter-body">
+      <p>From the very first moment I saw you on that beautiful 27th of March, I knew something extraordinary had begun. Your smile, your warmth — everything felt like home.</p>
+      <p>When you placed that ring on my finger on 20th April, time stood still. In that moment, I saw our entire future — every sunrise, every laugh, every shared dream woven together.</p>
+      <p>Every meeting with you since then has only deepened my love. 23rd April, 25th April — each day is a new verse in a poem that never ends.</p>
+      <p>You are my favourite adventure, my safest place, my greatest love. I choose you — today, tomorrow and in every lifetime to come.</p>
+    </div>
+    <p class="letter-sign">Forever yours,<br>Sadhana 💕</p>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <span class="forever">Sadhana ❤️ Kamal</span>
+  Together forever · Written in the stars · Always & Always
+  <br><br>
+  <span style="font-size:.8rem;opacity:.4;font-family:sans-serif;">Made with infinite love ✦</span>
+</footer>
+
+<!-- ════════════ TIMELINE MODAL ════════════ -->
+<div id="tl-modal-overlay">
+  <div class="modal">
+    <h3>Add a New Moment 💫</h3>
+    <div class="tl-modal-grid">
+      <input type="text" id="tl-emoji-input" placeholder="Emoji e.g. 🌷" maxlength="4"/>
+      <input type="text" id="tl-date-input" placeholder="Date e.g. 1 May"/>
+    </div>
+    <input type="text" id="tl-title-input" placeholder="Title e.g. Our First Movie Night" maxlength="40" style="width:100%;padding:12px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(232,67,106,.4);border-radius:10px;color:#fff;font-size:1rem;font-family:'Cormorant Garamond',serif;outline:none;margin-bottom:12px;"/>
+    <textarea id="tl-desc-input" rows="3" placeholder="Tell the story of this moment..."></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeTlModal()">Cancel</button>
+      <button class="btn-save" onclick="saveTlMoment()">Add Moment 💕</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ HOBBY MODAL ════════════ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3 id="modal-title">Add a Hobby</h3>
+    <input type="text" id="hobby-input" placeholder="e.g. 🎭 Acting" maxlength="30"/>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveHobby()">Add ✨</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ FIREBASE ════════════ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  // ── Replace with your own Firebase config ──
+//   const firebaseConfig = {
+//     apiKey: "YOUR_API_KEY",
+//     authDomain: "YOUR_PROJECT.firebaseapp.com",
+//     databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+//     projectId: "YOUR_PROJECT",
+//     storageBucket: "YOUR_PROJECT.appspot.com",
+//     messagingSenderId: "YOUR_SENDER_ID",
+//     appId: "YOUR_APP_ID"
+//   };
+
+   const firebaseConfig = {
+  apiKey: "AIzaSyAlxLrrMnwIBvxdQcqQWcgVoUvuM-h9n2g",
+  authDomain: "kanban-3e0d5.firebaseapp.com",
+  projectId: "kanban-3e0d5",
+  storageBucket: "kanban-3e0d5.appspot.com",
+  messagingSenderId: "974336051979",
+  appId: "1:974336051979:web:eca4e19e609e5c04cf700e",
+  measurementId: "G-2F8JWWMNDQ"
+};
+
+
+  let db;
+  try {
+    const app = initializeApp(firebaseConfig);
+    db = getDatabase(app);
+
+    // ── LOAD hobbies from Firebase ──
+    ['sadhana','kamal'].forEach(person => {
+      onValue(ref(db, `hobbies/${person}`), snapshot => {
+        const data = snapshot.val();
+        if (!data) return;
+        const container = document.getElementById(`${person}-tags`);
+        // Clear existing Firebase hobbies (keep originals by class)
+        container.querySelectorAll('.fb-tag').forEach(t => t.remove());
+        Object.values(data).forEach(h => {
+          const t = document.createElement('span');
+          t.className = 'hobby-tag fb-tag';
+          t.textContent = h;
+          container.appendChild(t);
+        });
+      });
+    });
+
+    // Expose save function to global scope
+    window._firebaseSave = (person, hobby) => {
+      push(ref(db, `hobbies/${person}`), hobby);
+    };
+    window._firebaseSaveMoment = (moment) => {
+      push(ref(db, `timeline`), moment);
+    };
+  } catch(e) {
+    console.warn('Firebase not configured — running in local mode.');
+    window._firebaseSave = null;
+  }
+</script>
+
+<script>
+  /* ── CURSOR ── */
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+
+  /* ── SPARKLES on click ── */
+  document.addEventListener('click', e => {
+    for(let i=0;i<6;i++){
+      const s = document.createElement('div');
+      s.className='sparkle';
+      s.style.left = (e.clientX + (Math.random()-0.5)*30) + 'px';
+      s.style.top  = (e.clientY + (Math.random()-0.5)*30) + 'px';
+      s.style.background = ['#ffd700','#ff6b8a','#fff','#f48fb1'][Math.floor(Math.random()*4)];
+      s.style.width = s.style.height = (4+Math.random()*6)+'px';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(), 700);
+    }
+  });
+
+  /* ── PETAL RAIN ── */
+  const petalContainer = document.getElementById('petals');
+  for(let i=0;i<22;i++){
+    const p = document.createElement('div');
+    p.className='petal';
+    p.style.left = Math.random()*100+'%';
+    p.style.animationDuration = (4+Math.random()*8)+'s';
+    p.style.animationDelay = (Math.random()*8)+'s';
+    p.style.width = (8+Math.random()*10)+'px';
+    p.style.height = (12+Math.random()*14)+'px';
+    p.style.opacity = .4+Math.random()*.5;
+    petalContainer.appendChild(p);
+  }
+
+  /* ── HEARTS CANVAS ── */
+  const canvas = document.getElementById('hearts-canvas');
+  const ctx = canvas.getContext('2d');
+  let hearts = [];
+
+  function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  resize(); window.addEventListener('resize',resize);
+
+  class Heart {
+    constructor(){
+      this.x = Math.random()*canvas.width;
+      this.y = canvas.height + 20;
+      this.size = 8+Math.random()*18;
+      this.speed = .4+Math.random()*.8;
+      this.drift = (Math.random()-.5)*.6;
+      this.alpha = .1+Math.random()*.3;
+      this.hue = Math.random()>0.5? '#e8436a':'#d4a843';
+    }
+    draw(){
+      ctx.save();
+      ctx.globalAlpha=this.alpha;
+      ctx.translate(this.x,this.y);
+      ctx.scale(this.size/30,this.size/30);
+      ctx.beginPath();
+      ctx.moveTo(0,-10);
+      ctx.bezierCurveTo(10,-22,26,-12,26,0);
+      ctx.bezierCurveTo(26,14,0,30,0,30);
+      ctx.bezierCurveTo(0,30,-26,14,-26,0);
+      ctx.bezierCurveTo(-26,-12,-10,-22,0,-10);
+      ctx.closePath();
+      ctx.fillStyle=this.hue;
+      ctx.fill();
+      ctx.restore();
+    }
+    update(){ this.y-=this.speed; this.x+=this.drift; }
+  }
+
+  function animHearts(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(Math.random()<.06) hearts.push(new Heart());
+    hearts = hearts.filter(h=>{
+      h.update(); h.draw();
+      return h.y>-40;
+    });
+    requestAnimationFrame(animHearts);
+  }
+  animHearts();
+
+  /* ── TIMELINE MODAL ── */
+  let tlCount = document.querySelectorAll('.tl-item').length;
+
+  window.openTlModal = function(){
+    ['tl-emoji-input','tl-date-input','tl-title-input','tl-desc-input'].forEach(id=>{
+      document.getElementById(id).value='';
+    });
+    document.getElementById('tl-modal-overlay').classList.add('open');
+    setTimeout(()=>document.getElementById('tl-date-input').focus(),300);
+  };
+
+  window.closeTlModal = function(){
+    document.getElementById('tl-modal-overlay').classList.remove('open');
+  };
+
+  window.saveTlMoment = function(){
+    const emoji = document.getElementById('tl-emoji-input').value.trim() || '💫';
+    const date  = document.getElementById('tl-date-input').value.trim();
+    const title = document.getElementById('tl-title-input').value.trim();
+    const desc  = document.getElementById('tl-desc-input').value.trim();
+    if(!date || !title) { alert('Please fill in at least Date and Title ✨'); return; }
+
+    const container = document.getElementById('tl-container');
+    // Insert before the last item (the wedding item)
+    const items = container.querySelectorAll('.tl-item');
+    const lastItem = items[items.length - 1];
+
+    tlCount++;
+    const isOdd = (tlCount % 2 !== 0);
+    const item = document.createElement('div');
+    item.className = 'tl-item new-item visible';
+
+    if(isOdd){
+      item.innerHTML = `
+        <div class="tl-card">
+          <div class="tl-emoji">${emoji}</div>
+          <div class="tl-date">${date}</div>
+          <div class="tl-title">${title}</div>
+          <div class="tl-desc">${desc || 'A beautiful memory added to our story.'}</div>
+        </div>
+        <div class="tl-dot"><span></span></div>
+        <div style="width:45%"></div>`;
+    } else {
+      item.innerHTML = `
+        <div style="width:45%"></div>
+        <div class="tl-dot"><span></span></div>
+        <div class="tl-card">
+          <div class="tl-emoji">${emoji}</div>
+          <div class="tl-date">${date}</div>
+          <div class="tl-title">${title}</div>
+          <div class="tl-desc">${desc || 'A beautiful memory added to our story.'}</div>
+        </div>`;
+    }
+
+    container.insertBefore(item, lastItem);
+    closeTlModal();
+
+    // Burst confetti
+    for(let i=0;i<14;i++){
+      const s=document.createElement('div');
+      s.className='sparkle';
+      const rect=item.getBoundingClientRect();
+      s.style.left=(rect.left+rect.width/2+(Math.random()-.5)*120)+'px';
+      s.style.top=(rect.top+rect.height/2+(Math.random()-.5)*60)+'px';
+      s.style.background=['#ffd700','#ff6b8a','#fff','#f48fb1','#c0264d'][Math.floor(Math.random()*5)];
+      s.style.width=s.style.height=(5+Math.random()*8)+'px';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),800);
+    }
+
+    // Save to Firebase if available
+    if(window._firebaseSaveMoment) window._firebaseSaveMoment({emoji,date,title,desc});
+  };
+
+  document.getElementById('tl-modal-overlay').addEventListener('click',function(e){
+    if(e.target===this) closeTlModal();
+  });
+
+  /* ── TIMELINE SCROLL REVEAL ── */
+  const tlItems = document.querySelectorAll('.tl-item');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:.2});
+  tlItems.forEach(el=>io.observe(el));
+
+  /* ── CAROUSEL ── */
+  const track = document.getElementById('carousel-track');
+  const slides = track.children;
+  const dotsContainer = document.getElementById('carousel-dots');
+  let cur = 0;
+
+  // Build dots
+  for(let i=0;i<slides.length;i++){
+    const d = document.createElement('div');
+    d.className='c-dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsContainer.appendChild(d);
+  }
+
+  function goTo(n){
+    cur = (n+slides.length)%slides.length;
+    track.style.transform=`translateX(-${cur*100}%)`;
+    document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+  }
+
+  document.getElementById('prev-btn').addEventListener('click',()=>goTo(cur-1));
+  document.getElementById('next-btn').addEventListener('click',()=>goTo(cur+1));
+
+  // Auto-play
+  setInterval(()=>goTo(cur+1), 4000);
+
+  /* ── MODAL ── */
+  let currentPerson = null;
+
+  window.openModal = function(person){
+    currentPerson = person;
+    document.getElementById('modal-title').textContent =
+      `Add a Hobby for ${person.charAt(0).toUpperCase()+person.slice(1)}`;
+    document.getElementById('hobby-input').value='';
+    document.getElementById('modal-overlay').classList.add('open');
+    setTimeout(()=>document.getElementById('hobby-input').focus(),300);
+  };
+
+  window.closeModal = function(){
+    document.getElementById('modal-overlay').classList.remove('open');
+    currentPerson = null;
+  };
+
+  window.saveHobby = function(){
+    const val = document.getElementById('hobby-input').value.trim();
+    if(!val) return;
+
+    // Add to DOM
+    const container = document.getElementById(`${currentPerson}-tags`);
+    const t = document.createElement('span');
+    t.className='hobby-tag fb-tag';
+    t.textContent=val;
+    container.appendChild(t);
+
+    // Save to Firebase if available
+    if(window._firebaseSave) window._firebaseSave(currentPerson, val);
+
+    closeModal();
+  };
+
+  // Close on overlay click
+  document.getElementById('modal-overlay').addEventListener('click',function(e){
+    if(e.target===this) closeModal();
+  });
+
+  // Enter key in input
+  document.getElementById('hobby-input').addEventListener('keyup',e=>{
+    if(e.key==='Enter') saveHobby();
+  });
+</script>
+</body>
+</html>
